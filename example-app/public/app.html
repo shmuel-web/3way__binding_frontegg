@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="lib/front.js"></script>
+    
+</head>
+<body>
+    <h2>example app</h2>
+    <input type="text" value="Some text" data-3w-key="email" />
+    <label data-3w-key="first_name"></label>
+    <span data-3w-key="phone_number"></span>
+    <p></p>
+        <span>simple number: </span>
+        <input type="number" data-3w-key="simple_number">
+        <span data-3w-key="simple_number"></span>
+        <button onclick="incrament()">incrament simple number</button>
+    </p>
+    <p>
+            <span>simple number 2: </span>
+            <input type="number" data-3w-key="simple_number_2">
+            <span data-3w-key="simple_number_2"></span>
+            <button onclick="incrament2()">incrament simple number 2</button>
+        </p>
+    
+    <script>
+            (function(){
+                window['3w'].init('uuid', 'http://localhost:3000/3w')
+                window.incrament = ()=>{
+                    let simplenum = window['3w'].get('simple_number') || 0
+                    simplenum = parseInt(simplenum) + 1
+                    
+                    window['3w'].set('simple_number', simplenum)
+                }
+                window.incrament2 = ()=>{
+                    let simplenum = window['3w'].get('simple_number_2') || 0
+                    simplenum = parseInt(simplenum) + 1
+                    
+                    window['3w'].set('simple_number_2', simplenum)
+                }
+            })()
+    </script>
+</body>
+</html>
